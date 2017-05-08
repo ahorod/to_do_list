@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>To Do List</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='../css/styles.css'>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="panel-title panel">
+          <h1>To Do List</h1>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="panel panel-custom">
+        <div class="panel-body">
+            <%= yield %>
+        </div>
+      </div>
+      <a href="/">Home</a><br>
+      <!-- <form action="/clear_all" method="post">
+        <button type="submit" name="clear_all">Clear Database</button>
+      </form> -->
+    </div>
+    </div>
+  </body>
+</html>
