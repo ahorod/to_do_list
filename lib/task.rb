@@ -9,5 +9,6 @@ class Task < ActiveRecord::Base
 
   scope(:not_done, -> do
     where({:done => nil})
+    # where({:done => false})
   end)
 end
