@@ -9,13 +9,14 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @tasks = Task.all()
+  # @tasks_not_done = @tasks.not_done()
   @lists = List.all()
   erb(:index)
 end
 
 get('/tasks/:id/edit') do
   @task = Task.find(params.fetch("id").to_i())
-  erb(:task_edit)
+  erb(:task)
 end
 
 patch("/tasks/:id") do
@@ -23,6 +24,7 @@ patch("/tasks/:id") do
   @task = Task.find(params.fetch("id").to_i())
   @task.update({:description => description})
   @tasks = Task.all()
+  @lists = List.all()
   erb(:index)
 end
 
@@ -35,10 +37,16 @@ post("/tasks") do
   erb(:list)
 end
 
-post('/add_list') do
+post('/lists') do
   name = params[:name]
   new_list = List.create({:name => name})
   @lists = List.all()
   @tasks = Task.all()
   erb(:index)
+end
+
+get('/lists/:id') do
+  @list = List.find(params[:id].to_i())
+  @tasks = Task.all()
+  erb(:list)
 end
